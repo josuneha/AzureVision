@@ -16,7 +16,7 @@ You'll need to provision a **Cognitive Services** resource.
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create new > **Lab1-ComputerVision** > OK*
     - **Region**: *West europe*
-    - **Name**: *CV-lab01*
+    - **Name**: *Enter unique name*
     - **Pricing tier**: Standard S0
 3. Select the required checkboxes and create the resource **Review + Create > Create**.
 4. Wait for deployment to complete, and then view the deployment details.
@@ -307,7 +307,7 @@ print('Thumbnail saved in.', thumbnail_file_name)
 
 ## Save your results!
 
-Run the program with any of the suggested pictures (or any you may want), and save the results in the console (paste in Notepad or so). You will send an email by the end of the labs with the selected picture and results.
+Run the program with any of the suggested pictures (or any you may want), and save the results in the console (paste in Notepad or take screenshot). You will send an email by the end of the labs with the selected picture and results.
 ## More information
 
 In this exercise, you explored some of the image analysis and manipulation capabilities of the Computer Vision service. The service also includes capabilities for reading text, detecting faces, and other computer vision tasks.
