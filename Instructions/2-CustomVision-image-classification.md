@@ -15,7 +15,7 @@ In this exercise, you'll create **Custom Vision** resources for training and pre
 2. Select the **&#65291;Create a resource** button, search for *custom vision*, and create a **Custom Vision** resource with the following settings:
     - **Create options**: Both
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create new > **Lab2-CustomVision**>OK*
+    - **Resource group**: *Create new > **Lab2-3-CustomVision**>OK*
     - **Region**: *West Europe*
     - **Name**: *Enter a unique name*
     - **Training pricing tier**: F0
