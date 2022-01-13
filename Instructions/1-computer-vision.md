@@ -32,7 +32,7 @@ In this exercise, you'll complete a partially implemented client application tha
 **Python**
 
 ```
-pip install azure-cognitiveservices-vision-computervision==0.7.0
+pip install azure-cognitiveservices-vision-computervision
 ```
     
 3. View the contents of the **image-analysis** folder, and note that it contains a file for configuration settings:
