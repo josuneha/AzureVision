@@ -19,14 +19,14 @@ You can either use your local computer or [create an Azure Virtual Machine](http
     ![image](https://user-images.githubusercontent.com/64772417/149357360-679581bf-51da-4961-81a9-dc940f4d7cf5.png)
 
 
-1. After installation, open the Anaconda prompt and enter the following commands to install packages: 
+1. After installation, open the **Anaconda prompt (miniconda3)** (search in Windows) and enter the following commands to install packages: 
 
 ```
 pip install flask requests python-dotenv pylint matplotlib pillow
 pip install --upgrade numpy
 ```
 ### VS Code
-1. In your browser, navigate to [Visual Studio Code download page](https://code.visualstudio.com/Download)
+1. In your browser, navigate to Visual Studio Code download  page: https://code.visualstudio.com/Download
 1. Select and download the Windows installer. Most browsers give you the option to either save the file to your local computer (usually in your Downloads folder) or immediately run the installer file.
 1. Double-click the installer file to start the installation process.
 
@@ -45,5 +45,5 @@ Install the following Visual Studio Code extensions for the lab:
 
 1. Select the 'Python' extension published by Microsoft, in the either Extensions panel, or in the main panel, select Install.
     ![image](https://user-images.githubusercontent.com/64772417/149222737-a6dfd960-ddcf-4f89-aa31-f3e041e420de.png)
-
+1. If warning about a python interpreter is show, select the one shown by the tool (recently installed Python 3.8 conda)
 1. Search the extension **Indent on Paste** by **gazugafan** and Install as mentioned before.
