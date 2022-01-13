@@ -12,9 +12,12 @@ You can either use your local computer or [create an Azure Virtual Machine](http
 ### Python (and required packages)
 
 1. Download version 3.8 from https://docs.conda.io/en/latest/miniconda.html 
-![image](https://user-images.githubusercontent.com/64772417/149216837-6cb338a3-9bc4-456c-9f0b-5fe853f0f1a4.png)
+
+    ![image](https://user-images.githubusercontent.com/64772417/149216837-6cb338a3-9bc4-456c-9f0b-5fe853f0f1a4.png)
 1. Run setup to install - **Important**: Select the options to add Miniconda to the PATH variable and to register Miniconda as the default Python environment.
-![image](https://user-images.githubusercontent.com/64772417/149356286-8331a534-324a-467c-b026-c09110f7fa09.png)
+
+    ![image](https://user-images.githubusercontent.com/64772417/149357360-679581bf-51da-4961-81a9-dc940f4d7cf5.png)
+
 
 1. After installation, open the Anaconda prompt and enter the following commands to install packages: 
 
