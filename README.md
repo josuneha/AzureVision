@@ -7,7 +7,7 @@
 More information in https://azure.microsoft.com/en-us/free/students/, you can start free following the instructions: click on **Start Free** and use your UNAV email account.
 
 ### Windows OS
-You can either use your local computer or create an Azure Virtual Machine
+You can either use your local computer or [create an Azure Virtual Machine](https://github.com/unaihuete-org/AzureVisionTecnun/blob/main/CreateAzureVM.md#create-azure-vm)
 
 ### Python (and required packages)
 
