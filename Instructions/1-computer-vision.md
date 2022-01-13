@@ -36,24 +36,16 @@ pip install azure-cognitiveservices-vision-computervision
 ```
     
 3. View the contents of the **image-analysis** folder, and note that it contains a file for configuration settings:
-    - **C#**: appsettings.json
     - **Python**: .env
 
     Open the configuration file and update the configuration values it contains to reflect the **endpoint** and an authentication **key** for your cognitive services resource. Save your changes.
 4. Note that the **image-analysis** folder contains a code file for the client application:
 
-    - **C#**: Program.cs
+
     - **Python**: image-analysis.py
 
     Open the code file and at the top, under the existing namespace references, find the comment **Import namespaces**. Then, under this comment, add the following language-specific code to import the namespaces you will need to use the Computer Vision SDK:
 
-**C#**
-
-```C#
-// import namespaces
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
-```
 
 **Python**
 
@@ -75,18 +67,7 @@ In this exercise, you will use the Computer Vision service to analyze multiple i
 
 Now you're ready to use the SDK to call the Computer Vision service and analyze an image.
 
-1. In the code file for your client application (**Program.cs** or **image-analysis.py**), in the **Main** function, note that the code to load the configuration settings has been provided. Then find the comment **Authenticate Computer Vision client**. Then, under this comment, add the following language-specific code to create and authenticate a Computer Vision client object:
-
-**C#**
-
-```C#
-// Authenticate Computer Vision client
-ApiKeyServiceClientCredentials credentials = new ApiKeyServiceClientCredentials(cogSvcKey);
-cvClient = new ComputerVisionClient(credentials)
-{
-    Endpoint = cogSvcEndpoint
-};
-```
+1. In the code file for your client application ( **image-analysis.py**), in the **Main** function, note that the code to load the configuration settings has been provided. Then find the comment **Authenticate Computer Vision client**. Then, under this comment, add the following language-specific code to create and authenticate a Computer Vision client object:
 
 **Python**
 
@@ -100,20 +81,7 @@ cv_client = ComputerVisionClient(cog_endpoint, credential)
 
 3. In the **AnalyzeImage** function, under the comment **Specify features to be retrieved**, add the following code:
 
-**C#**
 
-```C#
-// Specify features to be retrieved
-List<VisualFeatureTypes?> features = new List<VisualFeatureTypes?>()
-{
-    VisualFeatureTypes.Description,
-    VisualFeatureTypes.Tags,
-    VisualFeatureTypes.Categories,
-    VisualFeatureTypes.Brands,
-    VisualFeatureTypes.Objects,
-    VisualFeatureTypes.Adult
-};
-```
 
 **Python**
 
@@ -129,37 +97,7 @@ features = [VisualFeatureTypes.description,
     
 4. In the **AnalyzeImage** function, under the comment **Get image analysis**, add the following code (including the comments indicating where you will add more code later.):
 
-**C#**
 
-```C
-// Get image analysis
-using (var imageData = File.OpenRead(imageFile))
-{    
-    var analysis = await cvClient.AnalyzeImageInStreamAsync(imageData, features);
-
-    // get image captions
-    foreach (var caption in analysis.Description.Captions)
-    {
-        Console.WriteLine($"Description: {caption.Text} (confidence: {caption.Confidence.ToString("P")})");
-    }
-
-    // Get image tags
-
-
-    // Get image categories
-
-
-    // Get brands in the image
-
-
-    // Get objects in the image
-
-
-    // Get moderation ratings
-    
-
-}            
-```
 
 **Python**
 
@@ -190,11 +128,7 @@ for caption in analysis.description.captions:
     
 5. Save your changes and return to the integrated terminal for the **image-analysis** folder, and enter the following command to run the program with the argument **images/street.jpg**:
 
-**C#**
 
-```
-dotnet run images/street.jpg
-```
 
 **Python**
 
@@ -212,19 +146,6 @@ It can sometimes be useful to identify relevant *tags* that provide clues about 
 
 1. In the **AnalyzeImage** function, under the comment **Get image tags**, add the following code:
 
-**C#**
-
-```C
-// Get image tags
-if (analysis.Tags.Count > 0)
-{
-    Console.WriteLine("Tags:");
-    foreach (var tag in analysis.Tags)
-    {
-        Console.WriteLine($" -{tag.Name} (confidence: {tag.Confidence.ToString("P")})");
-    }
-}
-```
 
 **Python**
 
@@ -243,64 +164,6 @@ if (len(analysis.tags) > 0):
 The Computer Vision service can suggest *categories* for images, and within each category it can identify well-known landmarks or celebrities.
 
 1. In the **AnalyzeImage** function, under the comment **Get image categories (including celebrities and landmarks)**, add the following code:
-
-**C#**
-
-```C
-// Get image categories (including celebrities and landmarks)
-List<LandmarksModel> landmarks = new List<LandmarksModel> {};
-List<CelebritiesModel> celebrities = new List<CelebritiesModel> {};
-Console.WriteLine("Categories:");
-foreach (var category in analysis.Categories)
-{
-    // Print the category
-    Console.WriteLine($" -{category.Name} (confidence: {category.Score.ToString("P")})");
-
-    // Get landmarks in this category
-    if (category.Detail?.Landmarks != null)
-    {
-        foreach (LandmarksModel landmark in category.Detail.Landmarks)
-        {
-            if (!landmarks.Any(item => item.Name == landmark.Name))
-            {
-                landmarks.Add(landmark);
-            }
-        }
-    }
-
-    // Get celebrities in this category
-    if (category.Detail?.Celebrities != null)
-    {
-        foreach (CelebritiesModel celebrity in category.Detail.Celebrities)
-        {
-            if (!celebrities.Any(item => item.Name == celebrity.Name))
-            {
-                celebrities.Add(celebrity);
-            }
-        }
-    }
-}
-
-// If there were landmarks, list them
-if (landmarks.Count > 0)
-{
-    Console.WriteLine("Landmarks:");
-    foreach(LandmarksModel landmark in landmarks)
-    {
-        Console.WriteLine($" -{landmark.Name} (confidence: {landmark.Confidence.ToString("P")})");
-    }
-}
-
-// If there were celebrities, list them
-if (celebrities.Count > 0)
-{
-    Console.WriteLine("Celebrities:");
-    foreach(CelebritiesModel celebrity in celebrities)
-    {
-        Console.WriteLine($" -{celebrity.Name} (confidence: {celebrity.Confidence.ToString("P")})");
-    }
-}
-```
 
 **Python**
 
@@ -348,20 +211,6 @@ Some brands are visually recognizable from logo's, even when the name of the bra
 
 1. In the **AnalyzeImage** function, under the comment **Get brands in the image**, add the following code:
 
-**C#**
-
-```C
-// Get brands in the image
-if (analysis.Brands.Count > 0)
-{
-    Console.WriteLine("Brands:");
-    foreach (var brand in analysis.Brands)
-    {
-        Console.WriteLine($" -{brand.Name} (confidence: {brand.Confidence.ToString("P")})");
-    }
-}
-```
-
 **Python**
 
 ```Python
@@ -379,40 +228,6 @@ if (len(analysis.brands) > 0):
 *Object detection* is a specific form of computer vision in which individual objects within an image are identified and their location indicated by a bounding box..
 
 1. In the **AnalyzeImage** function, under the comment **Get objects in the image**, add the following code:
-
-**C#**
-
-```C
-// Get objects in the image
-if (analysis.Objects.Count > 0)
-{
-    Console.WriteLine("Objects in image:");
-
-    // Prepare image for drawing
-    Image image = Image.FromFile(imageFile);
-    Graphics graphics = Graphics.FromImage(image);
-    Pen pen = new Pen(Color.Cyan, 3);
-    Font font = new Font("Arial", 16);
-    SolidBrush brush = new SolidBrush(Color.Black);
-
-    foreach (var detectedObject in analysis.Objects)
-    {
-        // Print object name
-        Console.WriteLine($" -{detectedObject.ObjectProperty} (confidence: {detectedObject.Confidence.ToString("P")})");
-
-        // Draw object bounding box
-        var r = detectedObject.Rectangle;
-        Rectangle rect = new Rectangle(r.X, r.Y, r.W, r.H);
-        graphics.DrawRectangle(pen, rect);
-        graphics.DrawString(detectedObject.ObjectProperty,font,brush,r.X, r.Y);
-
-    }
-    // Save annotated image
-    String output_file = "objects.jpg";
-    image.Save(output_file);
-    Console.WriteLine("  Results saved in " + output_file);   
-}
-```
 
 **Python**
 
@@ -451,14 +266,6 @@ Some images may not be suitable for all audiences, and you may need to apply som
 
 1. In the **AnalyzeImage** function, under the comment **Get moderation ratings**, add the following code:
 
-**C#**
-
-```C
-// Get moderation ratings
-string ratings = $"Ratings:\n -Adult: {analysis.Adult.IsAdultContent}\n -Racy: {analysis.Adult.IsRacyContent}\n -Gore: {analysis.Adult.IsGoryContent}";
-Console.WriteLine(ratings);
-```
-
 **Python**
 
 ```Python
@@ -479,26 +286,6 @@ In some cases, you may need to create a smaller version of an image named a *thu
 
 1. In your code file, find the **GetThumbnail** function; and under the comment **Generate a thumbnail**, add the following code:
 
-**C#**
-
-```C
-// Generate a thumbnail
-using (var imageData = File.OpenRead(imageFile))
-{
-    // Get thumbnail data
-    var thumbnailStream = await cvClient.GenerateThumbnailInStreamAsync(100, 100,imageData, true);
-
-    // Save thumbnail image
-    string thumbnailFileName = "thumbnail.png";
-    using (Stream thumbnailFile = File.Create(thumbnailFileName))
-    {
-        thumbnailStream.CopyTo(thumbnailFile);
-    }
-
-    Console.WriteLine($"Thumbnail saved in {thumbnailFileName}");
-}
-```
-
 **Python**
 
 ```Python
@@ -518,6 +305,9 @@ print('Thumbnail saved in.', thumbnail_file_name)
     
 2. Save your changes and run the program once for each of the image files in the **images** folder, opening the **thumbnail.jpg** file that is generated in the same folder as your code file for each image.
 
+## Save your results!
+
+Run the program with any of the suggested pictures (or any you may want), and save the results in the console (paste in Notepad or so). You will send an email by the end of the labs with the selected picture and results.
 ## More information
 
 In this exercise, you explored some of the image analysis and manipulation capabilities of the Computer Vision service. The service also includes capabilities for reading text, detecting faces, and other computer vision tasks.
