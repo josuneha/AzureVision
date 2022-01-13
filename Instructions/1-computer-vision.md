@@ -1,53 +1,33 @@
----
-lab:
-    title: 'Analyze Images with Computer Vision'
-    module: 'Module 8 - Getting Started with Computer Vision'
----
 
 # Analyze Images with Computer Vision
 
 Computer vision is an artificial intelligence capability that enables software systems to interpret visual input by analyzing images. In Microsoft Azure, the **Computer Vision** cognitive service provides pre-built models for common computer vision tasks, including analysis of images to suggest captions and tags, detection of common objects, landmarks, celebrities, brands, and the presence of adult content. You can also use the Computer Vision service to analyze image color and formats, and to generate "smart-cropped" thumbnail images.
 
-## Clone the repository for this course
+## Download the repository for this course
 
-If you have not already cloned **AI-102-AIEngineer** code repository to the environment where you're working on this lab, follow these steps to do so. Otherwise, open the cloned folder in Visual Studio Code.
-
-1. Start Visual Studio Code.
-2. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/AI-102-AIEngineer` repository to a local folder (it doesn't matter which folder).
-3. When the repository has been cloned, open the folder in Visual Studio Code.
-4. Wait while additional files are installed to support the C# code projects in the repo.
-
-    > **Note**: If you are prompted to add required assets to build and debug, select **Not Now**.
+Go to https://github.com/unaihuete-org/AzureVisionTecnun and click on **Code>Local>Download ZIP**. Extract the files from the **Download** folder and move it to the **Desktop**.
 
 ## Provision a Cognitive Services resource
 
-If you don't already have one in your subscription, you'll need to provision a **Cognitive Services** resource.
+You'll need to provision a **Cognitive Services** resource.
 
 1. Open the Azure portal at `https://portal.azure.com`, and sign in using the Microsoft account associated with your Azure subscription.
-2. Select the **&#65291;Create a resource** button, search for *cognitive services*, and create a **Cognitive Services** resource with the following settings:
+2. Search for **Free Services**, and create a **Computer Vision** resource with the following settings:
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Choose or create a resource group (if you are using a restricted subscription, you may not have permission to create a new resource group - use the one provided)*
-    - **Region**: *Choose any available region*
-    - **Name**: *Enter a unique name*
+    - **Resource group**: *Create new > **Lab1-ComputerVision** > OK*
+    - **Region**: *West europe*
+    - **Name**: *CV-lab01*
     - **Pricing tier**: Standard S0
-3. Select the required checkboxes and create the resource.
+3. Select the required checkboxes and create the resource **Review + Create > Create**.
 4. Wait for deployment to complete, and then view the deployment details.
 5. When the resource has been deployed, go to it and view its **Keys and Endpoint** page. You will need the endpoint and one of the keys from this page in the next procedure.
 
 ## Prepare to use the Computer Vision SDK
 
-In this exercise, you'll complete a partially implemented client application that uses the Computer Vision SDK to analyze images.
+In this exercise, you'll complete a partially implemented client application that uses the Computer Vision SDK to analyze images. IN Visual Studio Code, click on **File>Open Folder> Select the folder we extrated (the one recently downloaded from GitHub)**. If promped click in **Trust**.
 
-> **Note**: You can choose to use the SDK for either **C#** or **Python**. In the steps below, perform the actions appropriate for your preferred language.
-
-1. In Visual Studio Code, in the **Explorer** pane, browse to the **15-computer-vision** folder and expand the **C-Sharp** or **Python** folder depending on your language preference.
-2. Right-click the **image-analysis** folder and open an integrated terminal. Then install the Computer Vision SDK package by running the appropriate command for your language preference:
-
-**C#**
-
-```
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0
-```
+1. In Visual Studio Code, in the **Explorer** pane, browse to the **LabFiles>1-Computer-vision** folder and expand the **Python** folder.
+2. Right-click the **image-analysis** folder and open **in integrated terminal**. Then install the Computer Vision SDK package by running the appropriate command for your language preference:
 
 **Python**
 

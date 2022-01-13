@@ -21,10 +21,11 @@ You can either use your local computer or [create an Azure Virtual Machine](http
 
 1. After installation, open the **Anaconda prompt (miniconda3)** (search in Windows) and enter the following commands to install packages: 
 
-```
-pip install flask requests python-dotenv pylint matplotlib pillow
-pip install --upgrade numpy
-```
+    ```
+    pip install flask requests python-dotenv pylint matplotlib pillow
+    pip install --upgrade numpy
+    ```
+1.  Close the terminal.
 ### VS Code
 1. In your browser, navigate to Visual Studio Code download  page: https://code.visualstudio.com/Download
 1. Select and download the Windows installer. Most browsers give you the option to either save the file to your local computer (usually in your Downloads folder) or immediately run the installer file.
