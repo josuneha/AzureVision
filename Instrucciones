@@ -1,0 +1,8 @@
+
+En todos los laboratorios hay un fichero .env donde se dice el recurso de Azure que hay que crear. 
+en el campo ENDPOINT hay que indicar la url del servicio
+en el campo KEY hay que copiar una de las dos contraseñas
+
+Los laboratorios se pueden hacer creando la máquina virtual en Azure o instalando todo en local y conectandose al servicio. 
+
+Revisar la carpeta instrucciones donde explica cada uno de los ejercicios. 
